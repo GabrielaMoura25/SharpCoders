@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        // Vetor
+        let produtos = [];
+
+        // Menu
+        let menu = '1º Cadastrar produto\n';
+            menu+= '2º Listar produtos\n';
+            menu+= '3º Editar produto\n';
+            menu+= '4º Remover produto\n';
+            menu+= '5º Finalizar';
+
+        // Opção
+        let opcao = 0;
+
+        // Laçode repetição
+        do {
+            // Obter a opção
+            opcao = parseInt(prompt(menu));
+
+            // Ações
+            switch(opcao) {
+                case 1:
+                    // Cadastrar produto
+                    let produto = prompt('Digite o nome do produto: ');
+                    produtos.push(produto);
+                    alert('Produto cadastrado com sucesso!');
+                    break;
+                case 2:
+                    // Listar produtos
+                    let lista = '***** PRODUTOS CADASTRADOS *****\n\N';
+                    for (let indice = 0; indice < produtos.length; indice++) {
+                        lista+= produtos[indice] + '\n';
+                    }
+                    alert(lista);
+                    break;
+                case 3:
+                    // Editar produto
+                    let editar = prompt('Digite o nome do produto: ');
+                    let indiceEditar = produtos.indexOf(editar);
+                    let novoProduto = prompt('Digite o novo nome do produto: ');
+                    produtos[indiceEditar] = novoProduto;
+                    alert('Produto editado com sucesso!')
+                    break;
+                case 4:
+                    // Remover produto
+                    let indiceRemocao = -1;
+                    let remover = prompt('Digite o nome do produto: ');
+                    for (let indice = 0; indice < produtos.length; indice++) {
+                        if (remover == produtos[indice]) {
+                            indiceRemocao = indice;
+                        }
+                    }
+                    if (indiceRemocao != -1) {
+                        produtos.splice(indiceRemocao, 1);
+                        alert('Produto removido com sucesso!');
+                    } else {
+                        alert('Produto não encontrado!');
+                    }
+                    // let remover = prompt('Digite o nome do produto: ');
+                    // let indice = produtos.indexOf(remover);
+                    // if (indice == -1) {
+                    //     alert('Produto não encontrado!');
+                    // } else {
+                    // produtos.splice(indice, 1);
+                    // alert('Produto removido com sucesso!');
+                    //}   
+                    // break;
+                case 5:
+                    // Finalizar
+                    alert('Obrigado por utilizar o sistema!');
+                    break;
+                default:
+                    // Opção inválida
+                    alert('Opção inválida!');
+                    break;
+            }
+        } while(opcao != 5);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
