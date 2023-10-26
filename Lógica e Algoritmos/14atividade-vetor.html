@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TodoList</title>
     <script>
 
         // Vetor
@@ -35,7 +35,7 @@
                     break;
                 case 2:
                     // Listar produtos
-                    let lista = '***** PRODUTOS CADASTRADOS *****\n\N';
+                    let lista = '***** PRODUTOS CADASTRADOS *****\n\n';
                     for (let indice = 0; indice < produtos.length; indice++) {
                         lista+= produtos[indice] + '\n';
                     }
@@ -43,11 +43,20 @@
                     break;
                 case 3:
                     // Editar produto
+                    let indiceEditar = -1;
                     let editar = prompt('Digite o nome do produto: ');
-                    let indiceEditar = produtos.indexOf(editar);
-                    let novoProduto = prompt('Digite o novo nome do produto: ');
-                    produtos[indiceEditar] = novoProduto;
-                    alert('Produto editado com sucesso!')
+                    for (let indice = 0; indice < produtos.length; indice++) {
+                        if (editar == produtos[indice]) {
+                            indiceEditar = indice;
+                        }
+                    }
+                    if (indiceEditar != -1) {
+                        let novoProduto = prompt('Digite o novo nome do produto: ');
+                        produtos[indiceEditar] = novoProduto;
+                        alert('Produto editado com sucesso!');
+                    } else {
+                        alert('Produto não encontrado!');
+                    }
                     break;
                 case 4:
                     // Remover produto
@@ -64,15 +73,7 @@
                     } else {
                         alert('Produto não encontrado!');
                     }
-                    // let remover = prompt('Digite o nome do produto: ');
-                    // let indice = produtos.indexOf(remover);
-                    // if (indice == -1) {
-                    //     alert('Produto não encontrado!');
-                    // } else {
-                    // produtos.splice(indice, 1);
-                    // alert('Produto removido com sucesso!');
-                    //}   
-                    // break;
+                    break;
                 case 5:
                     // Finalizar
                     alert('Obrigado por utilizar o sistema!');
@@ -82,7 +83,7 @@
                     alert('Opção inválida!');
                     break;
             }
-        } while(opcao != 5);
+        } while(opcao !== 5);
 
     </script>
 </head>
